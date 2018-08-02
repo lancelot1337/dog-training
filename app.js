@@ -3,15 +3,16 @@ const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const dogsRoute = require('./api/routes/dogs');
+const handlersRoute = require('./api/routes/handlers');
 const morgan = require('morgan');
 
 //for mongoose
 //const uri = `mongodb://dogtraining:password1@ds159631.mlab.com:59631/dog-training`;
 const uri = 'mongodb://localhost/dogtraining'
 mongoose.connect(uri)
-    .then((result => {
+    .then(result => {
         console.log(`DB connected!`);
-    }))
+    })
     .catch(err => {
         console.log(`DB failed to connect, error: ${err}`);
     });
@@ -27,6 +28,7 @@ app.use(bodyParser.json());
 
 //routes to controller
 app.use('/dogs', dogsRoute);
+app.use('/handlers', handlersRoute);
 
 //for error handling
 app.use((req, res, next) => {
