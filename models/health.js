@@ -1,7 +1,7 @@
 const mongoose=require('mongoose');
 
-//blog Schema
 const healthSchema=mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
 	temperature: String,
 	pulse: String,
 	respiration: String,
