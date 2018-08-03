@@ -1,10 +1,10 @@
 const mongoose=require('mongoose');
 
-//blog Schema
 const trackerSchema=mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
 	distance: String,
 	detected: String,
 	type: String,
 })
 
-module.exports=mongoose.model('Tracker Dog' , trackerSchema)
+module.exports=mongoose.model('Tracker' , trackerSchema)
