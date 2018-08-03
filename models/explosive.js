@@ -1,11 +1,11 @@
 const mongoose=require('mongoose');
 
-//blog Schema
 const explosiveSchema=mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
 	bombsPlanted: String,
 	detected: String,
 	falseAlert: String,
 	missed: String,
 })
 
-module.exports=mongoose.model('Explosive Detection Dog' , explosiveSchema)
+module.exports=mongoose.model('Explosive' , explosiveSchema)
