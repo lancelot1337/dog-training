@@ -1,10 +1,10 @@
 const mongoose=require('mongoose');
 
-//blog Schema
 const specialSkillsSchema=mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
 	explosive: String,
 	tracker: String,
 	Assult: String,	
 })
 
-module.exports=mongoose.model('Special Skills' , specialSkillsSchema)
+module.exports=mongoose.model('SpecialSkills' , specialSkillsSchema)
