@@ -1,9 +1,9 @@
 const mongoose=require('mongoose');
 
-//blog Schema
 const trainingSchema=mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
 	basicObedience: String,
 	specialSkills: String,
 })
 
-module.exports=mongoose.model('Training' , TrainingSchema)
+module.exports=mongoose.model('Training' , trainingSchema)
