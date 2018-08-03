@@ -8,8 +8,8 @@ const morgan = require('morgan');
 
 //for mongoose
 //const uri = `mongodb://dogtraining:password1@ds159631.mlab.com:59631/dog-training`;
-const uri = 'mongodb://localhost/dogtraining'
-mongoose.connect(uri)
+const uri = 'mongodb://localhost:27017/dogtraining'
+mongoose.connect(uri, { useNewUrlParser: true })
     .then(result => {
         console.log(`DB connected!`);
     })
