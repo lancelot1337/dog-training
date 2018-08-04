@@ -5,7 +5,7 @@ const healthSchema = mongoose.Schema({
     temperature: String,
     pulse: String,
     respiration: String,
-    Feeding: String,
+    feeding: String,
 })
 
 module.exports = mongoose.model('Health', healthSchema)
