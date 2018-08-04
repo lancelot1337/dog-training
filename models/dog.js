@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-//blog Schema
 const dogSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     name: String,
