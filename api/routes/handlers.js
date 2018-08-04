@@ -7,7 +7,6 @@ const Handler = require('../../models/handler');
 router.get('/', (req, res, next) => {
     console.log('/handlers GET logged');
     Handler.find()
-        .select('_id')
         .populate('dog')
         .exec()
         .then(handlers => {
