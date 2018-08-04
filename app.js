@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const dogsRoute = require('./api/routes/dogs');
 const handlersRoute = require('./api/routes/handlers');
+const healthsRoutes = require('./api/routes/healths');
 const morgan = require('morgan');
 
 //for mongoose
@@ -29,6 +30,7 @@ app.use(bodyParser.json());
 //routes to controller
 app.use('/dogs', dogsRoute);
 app.use('/handlers', handlersRoute);
+app.use('/healths', healthsRoutes);
 
 //for error handling
 app.use((req, res, next) => {
