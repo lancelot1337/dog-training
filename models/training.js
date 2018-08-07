@@ -6,6 +6,7 @@ const trainingSchema = mongoose.Schema({
     specialSkills: String,
     tracker: String,
     explosive: String,
+    assault: String
 })
 
 module.exports = mongoose.model('Training', trainingSchema)
