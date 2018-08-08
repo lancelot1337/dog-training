@@ -3,6 +3,8 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Dog = require('../../models/dog');
 const Handler = require('../../models/handler');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 router.get('/', (req, res, next) => {
     console.log('/handlers GET logged');
@@ -60,8 +62,52 @@ router.post('/', (req, res, next) => {
         });
 });
 
-router.get('/login', (req, res, next) => {
-    console.log('/handlers/login GET logged');
-    
+router.post('/signup', (req, res, next) => {
+    console.log('/handlers/signup POST logged');
+    Hander.find({
+        email: req.body.email
+    })
+        .exec()
+        .then(handler => {
+            if (handler.length > 0) {
+                res.status(409).json({
+                    message: "Email is already registered, try logging in!"
+                });
+            }
+            else {
+                bcrypt.hash(req.body.password, 10, (err, hash) => {
+                    if (err) {
+                        return res.status(500).json({
+                            error: err
+                        });
+                    }
+                    else {
+                        const handler = new Handler({
+                            _id: new mongoose.Types.ObjectId,
+                            email: req.body.email,
+                            password: hash
+                        });
+                        handler.save()
+                            .then(result => {
+                                console.log(result);
+                                res.status(201).json({
+                                    message: "Handler created"
+                                });
+                            })
+                            .catch(err => {
+                                res.status(500).json({
+                                    error: err
+                                })
+                            });
+                    }
+                })
+            }
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err
+            });
+        });
 })
+
 module.exports = router;

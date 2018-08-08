@@ -6,7 +6,6 @@ const dogsRoute = require('./api/routes/dogs');
 const handlersRoute = require('./api/routes/handlers');
 const healthsRoute = require('./api/routes/healths');
 const trainingsRoute = require('./api/routes/trainings');
-const usersRoute = require('./api/routes/users');
 const morgan = require('morgan');
 
 //for mongoose
