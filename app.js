@@ -6,6 +6,7 @@ const dogsRoute = require('./api/routes/dogs');
 const handlersRoute = require('./api/routes/handlers');
 const healthsRoute = require('./api/routes/healths');
 const trainingsRoute = require('./api/routes/trainings');
+const usersRoute = require('./api/routes/users');
 const morgan = require('morgan');
 
 //for mongoose
@@ -33,6 +34,7 @@ app.use('/dogs', dogsRoute);
 app.use('/handlers', handlersRoute);
 app.use('/healths', healthsRoute);
 app.use('/trainings', trainingsRoute);
+app.use('/users', usersRoute);
 
 //for error handling
 app.use((req, res, next) => {
