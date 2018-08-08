@@ -34,7 +34,6 @@ app.use('/dogs', dogsRoute);
 app.use('/handlers', handlersRoute);
 app.use('/healths', healthsRoute);
 app.use('/trainings', trainingsRoute);
-app.use('/users', usersRoute);
 
 //for error handling
 app.use((req, res, next) => {
