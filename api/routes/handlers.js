@@ -19,6 +19,7 @@ router.get('/', (req, res, next) => {
                         _id: handler._id,
                         username: handler.username,
                         displayName: handler.displayName,
+                        email: handler.email,
                         dog: handler.dog,
                         request: {
                             type: 'GET',
@@ -34,33 +35,33 @@ router.get('/', (req, res, next) => {
             })
         });
 })
-router.post('/', (req, res, next) => {
-    console.log('/handlers POST logged');
-    Dog.findById(req.body.dogId)
-        .then(dog => {
-            if (!dog) {
-                return res.status(404).json({
-                    error: "Wrong dog id"
-                })
-            }
-            const handler = new Handler({
-                _id: new mongoose.Types.ObjectId,
-                username: req.body.username,
-                displayName: req.body.displayName,
-                dog: req.body.dogId
-            });
-            return handler
-                .save()
-        })
-        .then(result => {
-            res.status(201).json({
-                message: "Handler created successfully!"
-            });
-        })
-        .catch(err => {
-            error: err
-        });
-});
+// router.post('/', (req, res, next) => {
+//     console.log('/handlers POST logged');
+//     Dog.findById(req.body.dogId)
+//         .then(dog => {
+//             if (!dog) {
+//                 return res.status(404).json({
+//                     error: "Wrong dog id"
+//                 })
+//             }
+//             const handler = new Handler({
+//                 _id: new mongoose.Types.ObjectId,
+//                 username: req.body.username,
+//                 displayName: req.body.displayName,
+//                 dog: req.body.dogId
+//             });
+//             return handler
+//                 .save()
+//         })
+//         .then(result => {
+//             res.status(201).json({
+//                 message: "Handler created successfully!"
+//             });
+//         })
+//         .catch(err => {
+//             error: err
+//         });
+// });
 
 router.post('/signup', (req, res, next) => {
     console.log('/handlers/signup POST logged');
