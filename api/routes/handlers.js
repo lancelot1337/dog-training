@@ -218,5 +218,19 @@ router.post('/login', (req, res, status) => {
 
 router.delete('/:id', (req, res, next) => {
     console.log('/:id DELETE logged');
+    Handler.remove({
+        _id: req.params.id
+    })
+    .exec()
+    .then(result => {
+        res.status(200).json({
+            message: "Handler deleted"
+        });
+    })
+    .catch(err => {
+        res.status(500).json({
+            error: err
+        });
+    });
 })
 module.exports = router;
