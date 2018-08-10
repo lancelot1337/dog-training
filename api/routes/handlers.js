@@ -215,4 +215,8 @@ router.post('/login', (req, res, status) => {
             });
         })
 })
+
+router.delete('/:id', (req, res, next) => {
+    console.log('/:id DELETE logged');
+})
 module.exports = router;
