@@ -65,4 +65,22 @@ router.post('/', (req, res, next) => {
 		});
 });
 
+router.delete('/:id', (req, res, next) => {
+	console.log('/:id DELETE logged');
+	Dog.remove({
+		_id: req.params.id
+	})
+	.exec()
+	.then(result => {
+		res.status(200).json({
+			message: "Dog deleted"
+		});
+	})
+	.catch(err => {
+		res.status(500).json({
+			error: err
+		});
+	});
+})
+
 module.exports = router;
