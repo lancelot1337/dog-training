@@ -15,9 +15,7 @@ router.get('/', (req, res, next) => {
                         _id: training._id,
                         basicObedience: training.basicObedience,
                         specialSkills: training.specialSkills,
-                        tracker: JSON.parse(training.tracker),
-                        explosive: JSON.parse(training.explosive),
-                        assault: JSON.parse(training.assault),
+                        specialSkillsInfo: JSON.parse(training.specialSkillsInfo),
                         request: {
                             type: 'GET',
                             url: 'http://localhost:3000/trainings/' + training._id
@@ -39,9 +37,7 @@ router.post('/', (req, res, next) => {
         _id: new mongoose.Types.ObjectId(),
         basicObedience: req.body.basicObedience,
         specialSkills: req.body.specialSkills,
-        tracker: JSON.stringify(req.body.tracker),
-        explosive: JSON.stringify(req.body.explosive),
-        assault: JSON.stringify(req.body.assault),
+        specialSkillsInfo: JSON.stringify(req.body.specialSkillsInfo)
     });
     training.save()
         .then(result => {
@@ -52,9 +48,7 @@ router.post('/', (req, res, next) => {
                     _id: result._id,
                     basicObedience: result.basicObedience,
                     specialSkills: result.specialSkills,
-                    tracker: JSON.parse(result.tracker),
-                    explosive: JSON.parse(result.explosive),
-                    assault: JSON.parse(result.assault),
+                    specialSkillsInfo: JSON.parse(result.specialSkillsInfo),
                     request: {
                         type: 'GET',
                         url: 'http://localhost:3000/trainings/' + result._id
