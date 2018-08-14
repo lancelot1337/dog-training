@@ -33,6 +33,31 @@ router.get('/', (req, res, next) => {
 		});
 });
 
+router.get('/:id', (req, res, next) => {
+    const id = req.params.id;
+    Health.findById(id)
+        .exec()
+        .then(health => {
+            if(!health){
+                return res.status(404).json({
+                    message: "Health not found"
+                })
+            }
+            res.status(200).json({
+                health: health,
+                request: {
+                    type: 'GET',
+                    url: `http://localhost:3000/healths/`
+                }
+            })
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err
+            })
+        });
+})
+
 router.post('/', (req, res, next) => {
 	const health = new Health({
 		_id: new mongoose.Types.ObjectId(),
