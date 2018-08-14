@@ -36,6 +36,31 @@ router.get('/', (req, res, next) => {
 		});
 })
 
+router.get('/:id', (req, res, next) => {
+    const id = req.params.id;
+    Handler.findById(id)
+        .exec()
+        .then(handler => {
+            if(!handler){
+                return res.status(404).json({
+                    message: "Handler not found"
+                })
+            }
+            res.status(200).json({
+                handler: handler,
+                request: {
+                    type: 'GET',
+                    url: `http://localhost:3000/handlers/`
+                }
+            })
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err
+            })
+        });
+})
+
 router.post('/signup', (req, res, next) => {
 	console.log('/handlers/signup POST logged');
 	Dog.findById(req.body.dogId)
