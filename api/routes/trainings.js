@@ -32,6 +32,31 @@ router.get('/', (req, res, next) => {
         });
 });
 
+router.get('/:id', (req, res, next) => {
+    const id = req.params.id;
+    Training.findById(id)
+        .exec()
+        .then(training => {
+            if(!training){
+                return res.status(404).json({
+                    message: "Training not found"
+                })
+            }
+            res.status(200).json({
+                training: training,
+                request: {
+                    type: 'GET',
+                    url: `http://localhost:3000/trainings/`
+                }
+            })
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err
+            })
+        });
+})
+
 router.post('/', (req, res, next) => {
     const training = new Training({
         _id: new mongoose.Types.ObjectId(),
