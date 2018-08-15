@@ -5,6 +5,7 @@ const Dog = require('../../models/dog');
 const Handler = require('../../models/handler');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const checkAuth = require('../middleware/check-auth');
 
 router.get('/', (req, res, next) => {
 	console.log('/handlers GET logged');
