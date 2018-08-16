@@ -34,7 +34,7 @@ router.get('/', checkAuth, (req, res, next) => {
 		});
 });
 
-router.get('/:id', (req, res, next) => {
+router.get('/:id', checkAuth, (req, res, next) => {
 	const id = req.params.id;
 	Dog.findById(id)
 		.exec()
