@@ -58,7 +58,7 @@ router.get('/:id', checkAuth, (req, res, next) => {
 			})
 		});
 })
-router.post('/', (req, res, next) => {
+router.post('/', checkAuth, (req, res, next) => {
 	const dog = new Dog({
 		_id: new mongoose.Types.ObjectId(),
 		name: req.body.name,
