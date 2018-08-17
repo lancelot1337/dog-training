@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const Health = require('../../models/health');
+const checkAuth = require('../middleware/check-auth');
 
 router.get('/', (req, res, next) => {
 	console.log('/trainings GET logged');
