@@ -59,7 +59,7 @@ router.get('/:id', checkAuth, (req, res, next) => {
         });
 })
 
-router.post('/', (req, res, next) => {
+router.post('/', checkAuth, (req, res, next) => {
 	const health = new Health({
 		_id: new mongoose.Types.ObjectId(),
 		temperature: req.body.temperature,
