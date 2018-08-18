@@ -91,7 +91,7 @@ router.post('/', checkAuth, (req, res, next) => {
 		});
 });
 
-router.delete('/:id', (req, res, next) => {
+router.delete('/:id', checkAuth, (req, res, next) => {
 	console.log('/:id DELETE logged');
 	Health.remove({
 		_id: req.params.id
