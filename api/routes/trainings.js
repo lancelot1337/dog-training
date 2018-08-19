@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Training = require('../../models/training');
 const checkAuth = require('../middleware/check-auth');
 
-router.get('/', (req, res, next) => {
+router.get('/', checkAuth, (req, res, next) => {
     console.log('/trainings GET logged');
     Training.find()
         .exec()
