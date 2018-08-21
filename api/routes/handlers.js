@@ -169,6 +169,10 @@ router.post('/login', (req, res, status) => {
         })
 })
 
+router.patch('/:id', (req, res, next) => {
+    console.log(`/handlers/ PATCH logged`)
+})
+
 router.delete('/:id', (req, res, next) => {
     console.log('/:id DELETE logged');
     Handler.remove({
