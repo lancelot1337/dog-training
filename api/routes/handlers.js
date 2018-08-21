@@ -145,9 +145,9 @@ router.post('/login', (req, res, status) => {
                 }
                 if (result) {
                     const token = jwt.sign({
-                            email: handler[0].email,
-                            handlerId: handler[0]._id
-                        },
+                        email: handler[0].email,
+                        handlerId: handler[0]._id
+                    },
                         process.env.JWT_KEY,
                         {
                             expiresIn: "1h"
@@ -170,7 +170,30 @@ router.post('/login', (req, res, status) => {
 })
 
 router.patch('/:id', (req, res, next) => {
-    console.log(`/handlers/ PATCH logged`)
+    const id = req.params.id;
+    const updateOps = {};
+    for (const key in req.body) {
+        updateOps[key] = req.body[key];
+    }
+    Handler.update({ _id: id }, {
+        $set: updateOps
+    })
+        .exec()
+        .then(result => {
+            console.log(result)
+            res.status(200).json({
+                message: "Handler updated",
+                request: {
+                    type: "GET",
+                    url: "http://localhost:3000/handlers/" + id
+                }
+            })
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err
+            })
+        });
 })
 
 router.delete('/:id', (req, res, next) => {
