@@ -90,8 +90,31 @@ router.post('/', checkAuth, (req, res, next) => {
 		});
 });
 
-router.patch('/', (req, res, next) => {
-    console.log(`/ PATCH logged`)
+router.patch('/:id', (req, res, next) => {
+    const id = req.params.id;
+    const updateOps = {};
+    for (const key in req.body) {		//or const key of Object.keys(req.body)
+        updateOps[key] = req.body[key];
+    }
+
+    Dog.update({ _id: id }, {
+        $set: updateOps
+    })
+        .exec()
+        .then(result => {
+            console.log(result);
+            res.status(200).json({
+                message: "Dog updated",
+                request: {
+                    type: 'GET',
+                    url: 'http://localhost:3000/dogs/' + id
+                }
+            });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({ error: err });
+        });
 })
 
 router.delete('/:id', checkAuth, (req, res, next) => {
