@@ -90,6 +90,10 @@ router.post('/', checkAuth, (req, res, next) => {
 		});
 });
 
+router.patch('/', (req, res, next) => {
+    console.log(`/ PATCH logged`)
+})
+
 router.delete('/:id', checkAuth, (req, res, next) => {
 	console.log('/:id DELETE logged');
 	Dog.remove({
