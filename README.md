@@ -17,6 +17,8 @@ Features
 
 3. Bcrypt is used to store digest.
 
+4. And many more!
+
 Endpoints
 ------
 1. /
