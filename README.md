@@ -3,7 +3,7 @@ dog-training
 
 Abstract
 ------
-This is a backend **API** built using **Node.js** to support a dog training web app using **React.js on frontend**.
+This is a backend **API** built using **Node.js** to support a dog training web app using **React.js on frontend** [Link to React.js frontend](https://github.com/lancelot1337/dog-training-FE).
 
 Features
 ------
